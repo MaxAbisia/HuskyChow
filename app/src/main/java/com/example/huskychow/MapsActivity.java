@@ -47,6 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LatLng ivLocation = new LatLng(42.335376, -71.089357);
     LatLng chickenLousLocation = new LatLng(42.339279, -71.090179);
 
+    GlobalVariables globals = (GlobalVariables) getApplication();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         summaryCurrency = findViewById(R.id.summaryCurrency);
 
+        switch (globals.getValue()) {
+            case "rebecca's cafe":
+                focusRebeccas();
+                break;
+
+            case "iv":
+                focusIV();
+                break;
+
+            case "chicken lou's":
+                focusChickenLous();
+                break;
+        }
     }
 
     @Override
@@ -174,14 +188,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public boolean onMarkerClick(final Marker marker) {
 
                 if (marker.equals(rebeccaMarker)) {
+                    globals.setActiveRestaurant("rebecca's cafe");
                     focusRebeccas();
                     return true;
                 }
                 if (marker.equals(ivMarker)) {
+                    globals.setActiveRestaurant("iv");
                     focusIV();
                     return true;
                 }
                 if (marker.equals(chickenLousMarker)) {
+                    globals.setActiveRestaurant("chicken lou's");
                     focusChickenLous();
                     return true;
                 }
