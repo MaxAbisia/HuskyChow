@@ -31,9 +31,11 @@ public class DetailActivity extends FragmentActivity {
         this.url = (TextView) findViewById(R.id.url_field);
 
         //need to set data
-        if (variable.toLowerCase().equals("rebecca's cafe")) {
+        GlobalVariables g  = (GlobalVariables) getApplication();
+        String activeRestaurant = g.getValue().toString().toLowerCase();
+        if (activeRestaurant.equals("rebecca's cafe")) {
             setRebeccas();
-        } else if (variable.toLowerCase().equals("iv")) {
+        } else if (activeRestaurant.equals("iv")) {
             setIV();
         } else {
             setChickenLous();
