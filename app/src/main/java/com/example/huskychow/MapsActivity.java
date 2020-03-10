@@ -69,6 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Summary View
         summaryView = findViewById(R.id.summary_view);
+        summaryView.setOnClickListener(this);
 
         summaryNavButton = findViewById(R.id.summaryNav);
         summaryNavButton.setOnClickListener(this);
@@ -108,13 +109,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 } else {
                     showOnlyHuskyDollar();
                 }
-                dollarButton.setActivated(!dollarButton.isActivated());
                 cardButton.setActivated(false);
-                showOnlyHuskyDollar();
+                dollarButton.setActivated(!dollarButton.isActivated());
                 break;
 
             case R.id.summaryDetails:
+            case R.id.summary_view:
                 startActivity(new Intent(MapsActivity.this, DetailActivity.class));
+                break;
         }
     }
 
@@ -195,19 +197,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void focusRebeccas() {
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(rebeccasLocation));
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(rebeccasLocation));
         setRebeccaSummary();
         summaryView.setVisibility(View.VISIBLE);
     }
 
     public void focusIV() {
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(ivLocation));
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(ivLocation));
         setIVSummary();
         summaryView.setVisibility(View.VISIBLE);
     }
 
     public void focusChickenLous() {
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
         setChickenLousSummary();
         summaryView.setVisibility(View.VISIBLE);
     }
