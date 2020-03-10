@@ -29,7 +29,7 @@ public class SearchActivity extends AppCompatActivity {
         restaurants = new ArrayList<>();
         Restaurant RebeccasCafe = new Restaurant("Rebecca's Cafe",
                 "Churchill Hall, 380 Huntington Ave, Boston, MA 02115", CurrencyType.BOTH);
-        Restaurant IV = new Restaurant("IV", "1155 Tremont St, Boston, MA 02120",
+        Restaurant IV = new Restaurant("International Village", "1155 Tremont St, Boston, MA 02120",
                 CurrencyType.MEAL_SWIPES);
         Restaurant ChickenLous= new Restaurant("Chicken Lou's", "50 Forsyth St, Boston, MA 02115",
                 CurrencyType.HUSKY_DOLLARS);
@@ -73,6 +73,11 @@ public class SearchActivity extends AppCompatActivity {
                 if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     try  {
                         String input = searchBarInput.getText().toString();
+                        if (input.equals("")) {
+                            searchResultsLayout.removeAllViews();
+                            return false;
+                        }
+
                         ArrayList<Restaurant> foundRestaurants = new ArrayList<>();
 
                         for (Restaurant restaurant : restaurants) {
@@ -109,6 +114,7 @@ public class SearchActivity extends AppCompatActivity {
             });
             searchResultsLayout.addView(searchResult);
         }
+        foundRestaurants.clear();
     }
 
     private SearchResult makeSearchResult(Restaurant restaurant) {
