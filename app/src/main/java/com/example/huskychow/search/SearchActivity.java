@@ -71,29 +71,24 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    try  {
-                        String input = searchBarInput.getText().toString();
-                        if (input.equals("")) {
-                            searchResultsLayout.removeAllViews();
-                            return false;
-                        }
-
-                        ArrayList<Restaurant> foundRestaurants = new ArrayList<>();
-
-                        for (Restaurant restaurant : restaurants) {
-                            if (restaurant.getName().toLowerCase().contains(input.toLowerCase())) {
-                                foundRestaurants.add(restaurant);
-                            }
-                        }
-
-                        SetResults(searchResultsLayout, foundRestaurants);
-                        model.setResults(foundRestaurants);
-                        return true;
-                    }
-                    catch (Exception e) {
-                        System.out.println("Failed");
+                    String input = searchBarInput.getText().toString();
+                    if (input.equals("")) {
+                        searchResultsLayout.removeAllViews();
                         return false;
                     }
+
+                    ArrayList<Restaurant> foundRestaurants = new ArrayList<>();
+
+                    for (Restaurant restaurant : restaurants) {
+                        if (restaurant.getName().toLowerCase().contains(input.toLowerCase())) {
+                            foundRestaurants.add(restaurant);
+                        }
+                    }
+
+                    SetResults(searchResultsLayout, foundRestaurants);
+                    model.setResults(foundRestaurants);
+                    return true;
+
                 }
                 return false;
             }
