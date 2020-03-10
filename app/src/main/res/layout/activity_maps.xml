@@ -66,7 +66,7 @@
         android:orientation="vertical"
         android:elevation="10dp"
         android:translationZ="10dp"
-        android:visibility="gone">
+        android:visibility="invisible">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -83,11 +83,11 @@
 
             <ImageView
                 android:id="@+id/summaryCurrency"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/huskydollar" />
+                android:src="@drawable/swipeanddollar" />
 
         </RelativeLayout>
 

@@ -41,7 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Button summaryDetailsButton;
 
 
-    // doesn't work, will figure it out
+
 //    Drawable swipeanddollar = getResources().getDrawable(R.drawable.swipeanddollar);
 //    Drawable huskydollar = getResources().getDrawable(R.drawable.huskydollar);
 //    Drawable swipe = getResources().getDrawable(R.drawable.swipe);
@@ -120,6 +120,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         BitmapDescriptor huskyDollarIcon =
                 BitmapDescriptorFactory.fromResource(R.drawable.huskydollar);
+        BitmapDescriptor swipeIcon =
+                BitmapDescriptorFactory.fromResource(R.drawable.swipe);
+        BitmapDescriptor swipeAndDollarIcon =
+                BitmapDescriptorFactory.fromResource(R.drawable.swipeanddollar);
 
 
         // Add a marker in Hurtig and move the camera
@@ -134,7 +138,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions()
                         .position(rebeccas)
                         .title("Rebecca's Cafe")
-                        .icon(huskyDollarIcon));
+                        .icon(swipeAndDollarIcon));
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -161,7 +165,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryHours.setText("8:00 am – 4:00 pm");
         summaryDistance.setText("4 minutes away");
 
-//        summaryCurrency.setImageDrawable(swipeanddollar);
+
+        summaryCurrency.setImageResource(R.drawable.swipeanddollar);
 
     }
 
