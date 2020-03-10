@@ -12,9 +12,8 @@ public class Restaurant {
     //a link to the url hosting this Restaurant's website
     private String url;
 
-    //TODO: how do we want to store times?
-    private String openTime;
-    private String closeTime;
+    //the opening and closing time
+    private String hours;
 
     //the type of currency the restaurant accepts: husky dollars, meal swipes, or both
     private CurrencyType currencyType;
@@ -23,13 +22,12 @@ public class Restaurant {
     private RestaurantPrice price;
 
     //constructor for a Restaurant object
-    public Restaurant(String name, String address, String url, String openTime, String closeTime,
+    public Restaurant(String name, String address, String url, String hours,
                       CurrencyType currencyType, RestaurantPrice price) {
         this.name = name;
         this.address = address;
         this.url = url;
-        this.openTime = openTime;
-        this.closeTime = closeTime;
+        this.hours = hours;
         this.currencyType = currencyType;
         this.price = price;
     }
@@ -40,7 +38,7 @@ public class Restaurant {
     }
 
     //getters for the 5 private fields of this object
-    //TODO add one for open and close time
+    public String getHours() { return this.hours; }
 
     //returns the name of the restaurant.
     public String getName() {
