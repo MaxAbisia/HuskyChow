@@ -89,7 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(hurtig));
         mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
 
-        // Add a marker in Rebecca's and move the camera
+        // Add a marker in Rebecca's
         LatLng rebeccas = new LatLng(42.338975, -71.088670);
         mMap.addMarker(new MarkerOptions()
                 .position(rebeccas)
