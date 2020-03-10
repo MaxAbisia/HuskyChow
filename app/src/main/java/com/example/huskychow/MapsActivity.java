@@ -87,6 +87,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryCurrency = findViewById(R.id.summaryCurrency);
 
         globals = (GlobalVariables) getApplication();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
 
         switch (globals.getValue()) {
             case "rebecca's cafe":

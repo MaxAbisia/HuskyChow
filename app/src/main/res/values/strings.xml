@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HuskyChow_Abisia</string>
+    <string name="app_name">HuskyChow</string>
     <string name="title_activity_maps">Map</string>
     <string name="words"> </string>
     <string name="dollarsign">$</string>
