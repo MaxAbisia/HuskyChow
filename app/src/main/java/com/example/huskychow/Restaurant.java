@@ -32,9 +32,10 @@ public class Restaurant {
         this.price = price;
     }
 
-    public Restaurant(String name, String address) {
+    public Restaurant(String name, String address, CurrencyType currencyType) {
         this.name = name;
         this.address = address;
+        this.currencyType = currencyType;
     }
 
     //getters for the 5 private fields of this object

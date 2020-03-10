@@ -2,6 +2,7 @@ package com.example.huskychow.search;
 
 import android.os.AsyncTask;
 
+import com.example.huskychow.CurrencyType;
 import com.example.huskychow.Restaurant;
 
 import java.io.BufferedReader;
@@ -92,7 +93,7 @@ public class PlacesSearchTask extends AsyncTask<Void, Void, ArrayList<Restaurant
 
         int addressIndex = result.indexOf("<formatted_address>") + "<formatted_address>".length();
         String address = result.substring(addressIndex, result.indexOf("</formatted_address"));
-        return new Restaurant(name, address);
+        return new Restaurant(name, address, CurrencyType.HUSKY_DOLLARS);
     }
 
     private String getParamsString(Map<String, String> parameters)

@@ -6,15 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".search.SearchActivity">
 
-    <com.example.huskychow.search.SearchResultsLayout
-        android:id="@+id/ResultsLayout"
+    <RelativeLayout
+        android:id="@+id/top_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark">
+
+        <EditText
+            android:id="@+id/SearchBar"
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:hint="@string/places_autocomplete_search_hint"
+            android:selectAllOnFocus="true"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/cardbutton"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="end"
+            android:layout_toStartOf="@id/dollarbutton"
+            android:background="@drawable/selector_button"
+            android:drawableLeft="@drawable/ic_credit_card_black_24dp"
+            android:gravity="center"
+            android:paddingLeft="30dp" />
+
+        <Button
+            android:id="@+id/dollarbutton"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="end"
+            android:drawableLeft="@drawable/huskydollar"
+            android:drawablePadding="5dp"
+            android:paddingLeft="29dp"
+            android:background="@drawable/selector_button"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical">
-    </com.example.huskychow.search.SearchResultsLayout>
+        android:layout_marginBottom="8dp">
+
+        <com.example.huskychow.search.SearchResultsLayout
+            android:id="@+id/ResultsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </FrameLayout>
