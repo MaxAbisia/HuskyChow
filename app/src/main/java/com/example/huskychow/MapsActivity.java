@@ -3,15 +3,15 @@ package com.example.huskychow;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.huskychow.search.SearchActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,9 +27,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
 
     // BUTTONS
-    private Button menuButton;
-    private ImageButton cardButton;
-    private ImageButton dollarButton;
+    private EditText searchBar;
+    private Button cardButton;
+    private Button dollarButton;
 
     Marker rebeccaMarker;
     Marker ivMarker;
@@ -58,8 +58,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         //buttons
-        menuButton = findViewById(R.id.menubutton);
-        menuButton.setOnClickListener(this);
+        searchBar = findViewById(R.id.SearchBar);
+        searchBar.setOnClickListener(this);
 
         cardButton = findViewById(R.id.cardbutton);
         cardButton.setOnClickListener(this);
@@ -90,7 +90,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.menubutton:
+            case R.id.SearchBar:
+                startActivity(new Intent(MapsActivity.this, SearchActivity.class));
                 break;
 
             case R.id.cardbutton:

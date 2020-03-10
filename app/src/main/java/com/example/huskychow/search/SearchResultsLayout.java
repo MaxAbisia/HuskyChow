@@ -53,16 +53,17 @@ public class SearchResultsLayout extends LinearLayout {
                 public void onClick(View v) {
                     // open that other view
                     searchResult.setBackgroundColor(Color.LTGRAY);
-                    SelectResult(v);
+                    SelectResult(v, searchResult.getPlaceName());
                 }
             });
             this.addView(searchResult);
         }
     }
 
-    private void SelectResult(View v) {
-        Intent intent = new Intent(mContext, MapsActivity.class);
-        mContext.startActivity(intent);
+    private void SelectResult(View v, String restaurantName) {
+//        Intent intent = new Intent(mContext, MapsActivity.class);
+//        intent.putExtra("ACTIVE_RESTAURANT", restaurantName);
+//        mContext.startActivity(intent);
     }
 
     private SearchResult makeSearchResult(Restaurant restaurant) {
