@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.huskychow.CurrencyType;
+import com.example.huskychow.GlobalVariables;
 import com.example.huskychow.R;
 import com.example.huskychow.Restaurant;
 import com.google.android.libraries.places.api.Places;

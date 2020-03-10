@@ -4,7 +4,7 @@ import android.app.Application;
 
 public class GlobalVariables extends Application {
 
-    private String activeRestaurant;
+    private String activeRestaurant = "";
 
     public String getValue() {
         return this.activeRestaurant;
