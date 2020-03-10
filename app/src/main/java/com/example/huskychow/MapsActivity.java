@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +23,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener, View.OnTouchListener {
 
     private GoogleMap mMap;
 
@@ -60,7 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //buttons
         searchBar = findViewById(R.id.SearchBar);
-        searchBar.setOnClickListener(this);
+        searchBar.setOnTouchListener(this);
 
         cardButton = findViewById(R.id.cardbutton);
         cardButton.setOnClickListener(this);
@@ -109,12 +110,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (v.getId() == R.id.SearchBar) {
+            startActivity(new Intent(MapsActivity.this, SearchActivity.class));
+        }
+        return false;
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.SearchBar:
-                startActivity(new Intent(MapsActivity.this, SearchActivity.class));
-                break;
-
             case R.id.cardbutton:
                 if (cardButton.isActivated()) {
                     showAll();

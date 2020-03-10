@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.huskychow.GlobalVariables;
 import com.example.huskychow.MapsActivity;
 import com.example.huskychow.Restaurant;
 
@@ -42,33 +43,5 @@ public class SearchResultsLayout extends LinearLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-    }
-
-    public void setViews(ArrayList<Restaurant> results) {
-        this.removeAllViews();
-        for (Restaurant result : results) {
-            final SearchResult searchResult = makeSearchResult(result);
-            searchResult.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // open that other view
-                    searchResult.setBackgroundColor(Color.LTGRAY);
-                    SelectResult(v, searchResult.getPlaceName());
-                }
-            });
-            this.addView(searchResult);
-        }
-    }
-
-    private void SelectResult(View v, String restaurantName) {
-//        Intent intent = new Intent(mContext, MapsActivity.class);
-//        intent.putExtra("ACTIVE_RESTAURANT", restaurantName);
-//        mContext.startActivity(intent);
-    }
-
-    private SearchResult makeSearchResult(Restaurant restaurant) {
-        SearchResult searchResult = new SearchResult(mContext);
-        searchResult.setResultDetails(restaurant);
-        return searchResult;
     }
 }
