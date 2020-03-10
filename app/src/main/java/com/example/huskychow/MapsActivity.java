@@ -32,6 +32,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ImageButton dollarButton;
 
     Marker rebeccaMarker;
+    Marker ivMarker;
+    Marker chickenLousMarker;
 
     LinearLayout summaryView;
     TextView summaryTitle;
@@ -41,11 +43,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Button summaryNavButton;
     Button summaryDetailsButton;
 
-
-
-//    Drawable swipeanddollar = getResources().getDrawable(R.drawable.swipeanddollar);
-//    Drawable huskydollar = getResources().getDrawable(R.drawable.huskydollar);
-//    Drawable swipe = getResources().getDrawable(R.drawable.swipe);
+    LatLng rebeccasLocation = new LatLng(42.338975, -71.088670);
+    LatLng ivLocation = new LatLng(42.335376, -71.089357);
+    LatLng chickenLousLocation = new LatLng(42.339279, -71.090179);
 
 
     @Override
@@ -90,7 +90,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.menubutton:
-//                startActivity(new Intent(MapsActivity.this, ScrollActivity.class));
                 break;
 
             case R.id.cardbutton:
@@ -129,26 +128,50 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         BitmapDescriptor swipeAndDollarIcon =
                 BitmapDescriptorFactory.fromResource(R.drawable.swipeanddollar);
 
-
-        // Add a marker in Hurtig and move the camera
-        LatLng hurtig = new LatLng(42.339683, -71.086208);
-        mMap.addMarker(new MarkerOptions().position(hurtig).title("Hurtig Hall"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(hurtig));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
-
         // Add a marker in Rebecca's
-        LatLng rebeccas = new LatLng(42.338975, -71.088670);
         rebeccaMarker =
                 mMap.addMarker(new MarkerOptions()
-                        .position(rebeccas)
+                        .position(rebeccasLocation)
                         .title("Rebecca's Cafe")
                         .icon(swipeAndDollarIcon));
+
+        // Add a marker in IV
+        ivMarker =
+                mMap.addMarker(new MarkerOptions()
+                        .position(ivLocation)
+                        .title("International Village")
+                        .icon(swipeIcon));
+
+        // Add a marker in Chicken Lou's
+        chickenLousMarker =
+                mMap.addMarker(new MarkerOptions()
+                        .position(chickenLousLocation)
+                        .title("Chicken Lou's")
+                        .icon(huskyDollarIcon));
+
+        // move map and set zoom
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
+
                 if (marker.equals(rebeccaMarker)) {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(rebeccasLocation));
                     setRebeccaSummary();
+                    summaryView.setVisibility(View.VISIBLE);
+                    return true;
+                }
+                if (marker.equals(ivMarker)) {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ivLocation));
+                    setIVSummary();
+                    summaryView.setVisibility(View.VISIBLE);
+                    return true;
+                }
+                if (marker.equals(chickenLousMarker)) {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
+                    setChickenLousSummary();
                     summaryView.setVisibility(View.VISIBLE);
                     return true;
                 }
@@ -169,9 +192,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryHours.setText("8:00 am – 4:00 pm");
         summaryDistance.setText("4 minutes away");
 
-
         summaryCurrency.setImageResource(R.drawable.swipeanddollar);
-
     }
 
+    public void setIVSummary() {
+        summaryTitle.setText("International Village");
+        summaryHours.setText("7:00 am – 9:00 pm");
+        summaryDistance.setText("12 minutes away");
+
+        summaryCurrency.setImageResource(R.drawable.swipe);
+    }
+
+    public void setChickenLousSummary() {
+        summaryTitle.setText("Chicken Lou's");
+        summaryHours.setText("7:30 am - 2:00 pm");
+        summaryDistance.setText("2 minutes away");
+
+        summaryCurrency.setImageResource(R.drawable.huskydollar);
+    }
 }
