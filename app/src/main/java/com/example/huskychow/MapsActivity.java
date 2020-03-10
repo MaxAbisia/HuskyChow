@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,6 +15,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener {
@@ -25,6 +26,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button menuButton;
     private Button cardButton;
     private Button dollarButton;
+
+    Marker rebeccaMarker;
+
+    LinearLayout summaryView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         cardButton.setOnClickListener(this);
         dollarButton.setOnClickListener(this);
 
+        summaryView = findViewById(R.id.summary_view);
     }
 
     @Override
@@ -91,14 +98,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Rebecca's
         LatLng rebeccas = new LatLng(42.338975, -71.088670);
-        mMap.addMarker(new MarkerOptions()
-                .position(rebeccas)
-                .title("Rebecca's Cafe")
-                .icon(huskyDollarIcon));
-        ;
+        rebeccaMarker =
+                mMap.addMarker(new MarkerOptions()
+                        .position(rebeccas)
+                        .title("Rebecca's Cafe")
+                        .icon(huskyDollarIcon));
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(final Marker marker) {
+                if (marker.equals(rebeccaMarker)) {
+                    summaryView.setVisibility(View.VISIBLE);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
-
-
-
 
 }
