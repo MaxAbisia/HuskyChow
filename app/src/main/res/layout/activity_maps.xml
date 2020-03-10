@@ -50,7 +50,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:drawableLeft="@drawable/ic_attach_money_black_24dp"
+            android:drawableLeft="@drawable/huskydollar"
             android:drawablePadding="5dp"
             android:paddingLeft="29dp"
             android:background="@drawable/selector_button"
