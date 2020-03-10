@@ -39,8 +39,9 @@
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@id/dollarbutton"
             android:background="@drawable/selector_button"
-            android:text="Dollars"
-            android:textColor="@color/colorPrimaryDark" />
+            android:drawableLeft="@drawable/ic_credit_card_black_24dp"
+            android:paddingLeft="30dp"
+            android:gravity="center"/>
 
         <Button
             android:id="@+id/dollarbutton"
@@ -49,9 +50,11 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:drawableLeft="@drawable/ic_attach_money_black_24dp"
+            android:drawablePadding="5dp"
+            android:paddingLeft="29dp"
             android:background="@drawable/selector_button"
-            android:text="@string/dollarsign"
-            android:textColor="@color/colorPrimaryDark" />
+            android:gravity="center"/>
     </RelativeLayout>
 
 
