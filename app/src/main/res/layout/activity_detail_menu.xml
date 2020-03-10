@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/name_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <ImageView
+        android:id="@+id/icon_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/huskydollar"
+        android:contentDescription="Currency Type">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/hours_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:textSize="18sp"
+        android:layout_gravity="left"
+        android:textColor="@color/colorPrimaryDark">
+    </TextView>
+
+    <TextView
+        android:id="@+id/address_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:textSize="18sp"
+        android:layout_gravity="left"
+        android:textColor="@color/colorPrimaryDark">
+    </TextView>
+
+    <TextView
+        android:id="@+id/url_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:textSize="18sp"
+        android:layout_gravity="left"
+        android:textColor="@color/colorPrimaryDark">
+    </TextView>
+</LinearLayout>
