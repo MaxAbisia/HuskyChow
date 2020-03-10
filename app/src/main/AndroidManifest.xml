@@ -34,7 +34,11 @@
             android:name=".DetailActivity"
             android:label="detail">
         </activity>
-
+        <activity
+            android:name=".search.SearchActivity"
+            android:parentActivityName=".MapsActivity"
+            android:label="@string/title_activity_search">
+        </activity>
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
