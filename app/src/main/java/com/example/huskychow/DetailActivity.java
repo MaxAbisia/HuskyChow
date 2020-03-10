@@ -32,9 +32,7 @@ public class DetailActivity extends FragmentActivity {
 
         //need to set data
         GlobalVariables g = (GlobalVariables) getApplication();
-        String activeRestaurant = g.getValue().toString().toLowerCase();
-        System.out.println("HERE");
-        System.out.println(activeRestaurant);
+        String activeRestaurant = g.getValue().toLowerCase();
         if (activeRestaurant.equals("rebecca's cafe")) {
             setRebeccas();
         } else if (activeRestaurant.equals("iv")) {

@@ -131,6 +131,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
 
             case R.id.summaryDetails:
+
+
             case R.id.summary_view:
                 startActivity(new Intent(MapsActivity.this, DetailActivity.class));
                 break;
@@ -190,7 +192,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public boolean onMarkerClick(final Marker marker) {
 
                 if (marker.equals(rebeccaMarker)) {
-//                    globals.setActiveRestaurant("rebecca's cafe");
+                    globals.setActiveRestaurant("rebecca's cafe");
                     focusRebeccas();
                     return true;
                 }
