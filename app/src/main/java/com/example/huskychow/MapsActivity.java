@@ -2,10 +2,14 @@ package com.example.huskychow;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,12 +27,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     // BUTTONS
     private Button menuButton;
-    private Button cardButton;
-    private Button dollarButton;
+    private ImageButton cardButton;
+    private ImageButton dollarButton;
 
     Marker rebeccaMarker;
 
     LinearLayout summaryView;
+    TextView summaryTitle;
+    TextView summaryHours;
+    TextView summaryDistance;
+    ImageView summaryCurrency;
+    Button summaryNavButton;
+    Button summaryDetailsButton;
+
+
+    // doesn't work, will figure it out
+//    Drawable swipeanddollar = getResources().getDrawable(R.drawable.swipeanddollar);
+//    Drawable huskydollar = getResources().getDrawable(R.drawable.huskydollar);
+//    Drawable swipe = getResources().getDrawable(R.drawable.swipe);
 
 
     @Override
@@ -42,13 +58,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //buttons
         menuButton = findViewById(R.id.menubutton);
-        cardButton = findViewById(R.id.cardbutton);
-        dollarButton = findViewById(R.id.dollarbutton);
         menuButton.setOnClickListener(this);
+
+        cardButton = findViewById(R.id.cardbutton);
         cardButton.setOnClickListener(this);
+
+        dollarButton = findViewById(R.id.dollarbutton);
         dollarButton.setOnClickListener(this);
 
+        // Summary View
         summaryView = findViewById(R.id.summary_view);
+
+        summaryNavButton = findViewById(R.id.summaryNav);
+        summaryNavButton.setOnClickListener(this);
+
+        summaryDetailsButton = findViewById(R.id.summaryDetails);
+        summaryDetailsButton.setOnClickListener(this);
+
+        summaryTitle = findViewById(R.id.summaryTitle);
+
+        summaryHours = findViewById(R.id.summaryHours);
+
+        summaryDistance = findViewById(R.id.summaryDistance);
+
+        summaryCurrency = findViewById(R.id.summaryCurrency);
+
     }
 
     @Override
@@ -106,6 +140,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onMarkerClick(final Marker marker) {
                 if (marker.equals(rebeccaMarker)) {
+                    setRebeccaSummary();
                     summaryView.setVisibility(View.VISIBLE);
                     return true;
                 }
@@ -119,6 +154,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 summaryView.setVisibility(View.GONE);
             }
         });
+    }
+
+    public void setRebeccaSummary() {
+        summaryTitle.setText("Rebecca's Cafe");
+        summaryHours.setText("8:00 am – 4:00 pm");
+        summaryDistance.setText("4 minutes away");
+
+//        summaryCurrency.setImageDrawable(swipeanddollar);
+
     }
 
 }
