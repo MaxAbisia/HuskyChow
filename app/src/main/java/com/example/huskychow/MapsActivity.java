@@ -12,6 +12,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -74,11 +76,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        mMap.clear();
+
+        BitmapDescriptor huskyDollarIcon =
+                BitmapDescriptorFactory.fromResource(R.drawable.huskydollar);
+
+
+
+        // Add a marker in Hurtig and move the camera
         LatLng hurtig = new LatLng(42.339683, -71.086208);
         mMap.addMarker(new MarkerOptions().position(hurtig).title("Hurtig Hall"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(hurtig));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(18));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+
+        // Add a marker in Rebecca's
+        LatLng rebeccas = new LatLng(42.338975, -71.088670);
+        mMap.addMarker(new MarkerOptions()
+                .position(rebeccas)
+                .title("Rebecca's Cafe")
+                .icon(huskyDollarIcon));
+        ;
     }
 
 
