@@ -171,21 +171,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public boolean onMarkerClick(final Marker marker) {
 
                 if (marker.equals(rebeccaMarker)) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(rebeccasLocation));
-                    setRebeccaSummary();
-                    summaryView.setVisibility(View.VISIBLE);
+                    focusRebeccas();
                     return true;
                 }
                 if (marker.equals(ivMarker)) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ivLocation));
-                    setIVSummary();
-                    summaryView.setVisibility(View.VISIBLE);
+                    focusIV();
                     return true;
                 }
                 if (marker.equals(chickenLousMarker)) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
-                    setChickenLousSummary();
-                    summaryView.setVisibility(View.VISIBLE);
+                    focusChickenLous();
                     return true;
                 }
                 return false;
@@ -198,6 +192,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 summaryView.setVisibility(View.GONE);
             }
         });
+    }
+
+    public void focusRebeccas() {
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(rebeccasLocation));
+        setRebeccaSummary();
+        summaryView.setVisibility(View.VISIBLE);
+    }
+
+    public void focusIV() {
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ivLocation));
+        setIVSummary();
+        summaryView.setVisibility(View.VISIBLE);
+    }
+
+    public void focusChickenLous() {
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
+        setChickenLousSummary();
+        summaryView.setVisibility(View.VISIBLE);
     }
 
     public void setRebeccaSummary() {
