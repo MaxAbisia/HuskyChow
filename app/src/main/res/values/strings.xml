@@ -3,4 +3,12 @@
     <string name="title_activity_maps">Map</string>
     <string name="words"> </string>
     <string name="dollarsign">$</string>
+    <string name="places_api_key">AIzaSyDBcLphw4W6dTsnaZGTkhKNcsEZRpevr8g</string>
+    <string name="error_api_key">No API key defined in gradle.properties</string>
+    <string name="husky_dollars_filter_description">Husky Dollars Filter</string>
+    <string name="husky_swipes_filter_description">Husky Swipes Filter</string>
+    <string name="title_activity_search">SearchActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

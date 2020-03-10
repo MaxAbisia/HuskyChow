@@ -34,6 +34,11 @@ public class Restaurant {
         this.price = price;
     }
 
+    public Restaurant(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
     //getters for the 5 private fields of this object
     //TODO add one for open and close time
 
