@@ -2,7 +2,6 @@ package com.example.huskychow;
 
 import androidx.fragment.app.FragmentActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -89,7 +88,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 BitmapDescriptorFactory.fromResource(R.drawable.huskydollar);
 
 
-
         // Add a marker in Hurtig and move the camera
         LatLng hurtig = new LatLng(42.339683, -71.086208);
         mMap.addMarker(new MarkerOptions().position(hurtig).title("Hurtig Hall"));
@@ -112,6 +110,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     return true;
                 }
                 return false;
+            }
+        });
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                summaryView.setVisibility(View.GONE);
             }
         });
     }
