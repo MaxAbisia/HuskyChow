@@ -68,6 +68,6 @@ public class SearchResult extends FrameLayout {
     }
 
     public String getPlaceName() {
-        return PlaceName.toString();
+        return PlaceName.getText().toString();
     }
 }

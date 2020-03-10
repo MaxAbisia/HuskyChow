@@ -48,7 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LatLng ivLocation = new LatLng(42.335376, -71.089357);
     LatLng chickenLousLocation = new LatLng(42.339279, -71.090179);
 
-    GlobalVariables globals;
+    GlobalVariables g;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,27 +86,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryDistance = findViewById(R.id.summaryDistance);
 
         summaryCurrency = findViewById(R.id.summaryCurrency);
-
-        globals = (GlobalVariables) getApplication();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        switch (globals.getValue()) {
-            case "rebecca's cafe":
-                focusRebeccas();
-                break;
-
-            case "iv":
-                focusIV();
-                break;
-
-            case "chicken lou's":
-                focusChickenLous();
-                break;
-        }
     }
 
     @Override
@@ -194,25 +173,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .icon(huskyDollarIcon));
 
         // move map and set zoom
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+        g = (GlobalVariables) getApplication();
+        String activeRestaurant = g.getValue().toLowerCase();
+        if (activeRestaurant.equals("rebecca's cafe")) {
+            focusRebeccas();
+        } else if (activeRestaurant.equals("iv")) {
+            focusIV();
+        } else if (activeRestaurant.equals("chicken lou's")) {
+            focusChickenLous();
+        } else {
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
+            mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+        }
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
 
                 if (marker.equals(rebeccaMarker)) {
-                    globals.setActiveRestaurant("rebecca's cafe");
+                    g.setActiveRestaurant("rebecca's cafe");
                     focusRebeccas();
                     return true;
                 }
                 if (marker.equals(ivMarker)) {
-                    globals.setActiveRestaurant("iv");
+                    g.setActiveRestaurant("iv");
                     focusIV();
                     return true;
                 }
                 if (marker.equals(chickenLousMarker)) {
-                    globals.setActiveRestaurant("chicken lou's");
+                    g.setActiveRestaurant("chicken lou's");
                     focusChickenLous();
                     return true;
                 }
@@ -229,18 +218,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void focusRebeccas() {
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(rebeccasLocation));
         setRebeccaSummary();
         summaryView.setVisibility(View.VISIBLE);
     }
 
     public void focusIV() {
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(ivLocation));
         setIVSummary();
         summaryView.setVisibility(View.VISIBLE);
     }
 
     public void focusChickenLous() {
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
         setChickenLousSummary();
         summaryView.setVisibility(View.VISIBLE);
