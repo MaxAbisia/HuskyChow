@@ -19,6 +19,7 @@ public class SearchResult extends FrameLayout {
     private TextView PlaceName;
     // the restaurant's address on the ui
     private TextView Address;
+    // the image for the type of currency the restaurant takes
     private ImageView CurrencyImage;
 
     public SearchResult(Context context) {
