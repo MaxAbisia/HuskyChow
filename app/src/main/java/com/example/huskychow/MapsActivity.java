@@ -93,11 +93,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
 
             case R.id.cardbutton:
+                if (cardButton.isActivated()) {
+                    showAll();
+                } else {
+                    showOnlySwipes();
+                }
+                dollarButton.setActivated(false);
                 cardButton.setActivated(!cardButton.isActivated());
                 break;
 
             case R.id.dollarbutton:
+                if (dollarButton.isActivated()) {
+                    showAll();
+                } else {
+                    showOnlyHuskyDollar();
+                }
                 dollarButton.setActivated(!dollarButton.isActivated());
+                cardButton.setActivated(false);
+                showOnlyHuskyDollar();
                 break;
 
             case R.id.summaryDetails:
@@ -209,5 +222,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryDistance.setText("2 minutes away");
 
         summaryCurrency.setImageResource(R.drawable.huskydollar);
+    }
+
+    public void showOnlyHuskyDollar() {
+        ivMarker.setVisible(false);
+        chickenLousMarker.setVisible(true);
+    }
+
+    public void showOnlySwipes() {
+        chickenLousMarker.setVisible(false);
+        ivMarker.setVisible(true);
+    }
+
+    public void showAll() {
+        chickenLousMarker.setVisible(true);
+        ivMarker.setVisible(true);
     }
 }
