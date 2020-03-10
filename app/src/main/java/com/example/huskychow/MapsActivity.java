@@ -100,6 +100,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.dollarbutton:
                 dollarButton.setActivated(!dollarButton.isActivated());
                 break;
+
+            case R.id.summaryDetails:
+                startActivity(new Intent(MapsActivity.this, DetailActivity.class));
         }
     }
 
