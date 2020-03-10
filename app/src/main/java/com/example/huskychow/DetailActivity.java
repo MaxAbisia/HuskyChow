@@ -31,9 +31,14 @@ public class DetailActivity extends FragmentActivity {
         this.url = (TextView) findViewById(R.id.url_field);
 
         //need to set data
-        setRebeccas();
+        if (variable.toLowerCase().equals("rebecca's cafe")) {
+            setRebeccas();
+        } else if (variable.toLowerCase().equals("iv")) {
+            setIV();
+        } else {
+            setChickenLous();
+        }
     }
-
 
     //void methods to populate data needed by the view
     //canned data, will change for final implementation

@@ -73,6 +73,33 @@
         android:layout_marginRight="10dp"
         android:textSize="18sp"
         android:layout_gravity="left"
-        android:textColor="@color/colorPrimaryDark">
+        android:textColor="@color/blueDark">
     </TextView>
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="55dp"
+        android:layout_marginStart="55dp">
+
+        <Button android:id="@+id/navigateButton"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:text="Navigate"
+            android:layout_alignParentEnd="true">
+        </Button>
+
+        <Button android:id="@+id/shareButton"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:text="Share">
+        </Button>
+    </RelativeLayout>
 </LinearLayout>
