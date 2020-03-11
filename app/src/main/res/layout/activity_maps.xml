@@ -24,7 +24,6 @@
             android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
-            android:hint="@string/places_autocomplete_search_hint"
             android:selectAllOnFocus="true"
             android:singleLine="true" />
 
@@ -110,6 +109,7 @@
         android:orientation="vertical"
         android:elevation="10dp"
         android:translationZ="10dp"
+        android:paddingTop="10dp"
         android:visibility="invisible">
 
         <RelativeLayout
@@ -123,7 +123,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Title" />
 
             <ImageView
                 android:id="@+id/summaryCurrency"
@@ -147,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -155,7 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -170,7 +171,7 @@
                 android:layout_width="160dp"
                 android:layout_height="40dp"
                 android:background="@drawable/rounded_button"
-                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:text="NAVIGATE"
                 android:textSize="16sp" />
 
@@ -181,7 +182,7 @@
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/rounded_button"
-                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:text="DETAILS"
                 android:textSize="16sp" />
 

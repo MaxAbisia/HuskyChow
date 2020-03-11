@@ -141,7 +141,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         mMap.clear();
 
         BitmapDescriptor huskyDollarIcon =
@@ -173,17 +172,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .icon(huskyDollarIcon));
 
         // move map and set zoom
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+
+        // if location already selected
         g = (GlobalVariables) getApplication();
         String activeRestaurant = g.getValue().toLowerCase();
         if (activeRestaurant.equals("rebecca's cafe")) {
             focusRebeccas();
-        } else if (activeRestaurant.equals("iv")) {
+        } else if (activeRestaurant.equals("international village")) {
             focusIV();
         } else if (activeRestaurant.equals("chicken lou's")) {
             focusChickenLous();
-        } else {
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
-            mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         }
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -196,7 +196,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     return true;
                 }
                 if (marker.equals(ivMarker)) {
-                    g.setActiveRestaurant("iv");
+                    g.setActiveRestaurant("international village");
                     focusIV();
                     return true;
                 }

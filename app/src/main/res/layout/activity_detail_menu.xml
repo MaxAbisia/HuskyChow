@@ -1,109 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/name_field"
+    <ImageButton
+        android:id="@+id/detailBackButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_back"
+        android:background="@color/white"
+        android:layout_marginTop="20dp" />
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="10dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="bold">
-    </TextView>
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="5dp">
 
-    <ImageView
-        android:id="@+id/icon_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/huskydollar"
-        android:contentDescription="Currency Type">
-    </ImageView>
+        <TextView
+            android:id="@+id/name_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Title" />
+
+        <ImageView
+            android:id="@+id/icon_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/huskydollar" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/hours_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
-        android:textSize="18sp"
-        android:layout_gravity="left"
-        android:textColor="@color/colorPrimaryDark">
-    </TextView>
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/mins_away_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
-        android:textSize="18sp"
-        android:layout_gravity="left"
-        android:textColor="@color/colorPrimaryDark">
-    </TextView>
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/address_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
-        android:textSize="18sp"
-        android:layout_gravity="left"
-        android:textColor="@color/colorPrimaryDark">
-    </TextView>
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/url_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
-        android:textSize="18sp"
-        android:layout_gravity="left"
-        android:textColor="@color/blueDark">
-    </TextView>
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/blueDark"
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="55dp"
-        android:layout_marginStart="55dp">
+        android:paddingTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
         <Button
             android:id="@+id/navigateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/rounded_button"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:text="Navigate"></Button>
+            android:text="Navigate" />
 
         <Button
             android:id="@+id/shareButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/rounded_button"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:text="Share"></Button>
+            android:text="Share" />
     </RelativeLayout>
+
 </LinearLayout>

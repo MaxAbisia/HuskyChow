@@ -1,13 +1,17 @@
 package com.example.huskychow;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 
-public class DetailActivity extends FragmentActivity {
+public class DetailActivity extends FragmentActivity implements OnClickListener {
 
     //fields
     private TextView name;
@@ -16,6 +20,7 @@ public class DetailActivity extends FragmentActivity {
     private TextView mins_away;
     private TextView address;
     private TextView url;
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +35,15 @@ public class DetailActivity extends FragmentActivity {
         this.address = (TextView) findViewById(R.id.address_field);
         this.url = (TextView) findViewById(R.id.url_field);
 
+        backButton = findViewById(R.id.detailBackButton);
+        backButton.setOnClickListener(this);
+
         //need to set data
         GlobalVariables g = (GlobalVariables) getApplication();
         String activeRestaurant = g.getValue().toLowerCase();
         if (activeRestaurant.equals("rebecca's cafe")) {
             setRebeccas();
-        } else if (activeRestaurant.equals("iv")) {
+        } else if (activeRestaurant.equals("international village")) {
             setIV();
         } else if (activeRestaurant.equals("chicken lou's")) {
             setChickenLous();
@@ -70,5 +78,13 @@ public class DetailActivity extends FragmentActivity {
         this.mins_away.setText("2 minutes away.");
         this.address.setText("50 Forsyth St, Boston, MA 02115");
         this.url.setText("chickenlous.com");
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.detailBackButton:
+                startActivity(new Intent(DetailActivity.this, MapsActivity.class));
+        }
     }
 }
