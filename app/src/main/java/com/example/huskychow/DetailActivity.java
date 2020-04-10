@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,14 +27,14 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
         setContentView(R.layout.activity_detail_menu);
 
         //connecting to xml code
-        this.name = (TextView) findViewById(R.id.name_field);
-        this.icon = (ImageView) findViewById(R.id.icon_field);
-        this.hours = (TextView) findViewById(R.id.hours_field);
-        this.mins_away = (TextView) findViewById(R.id.mins_away_field);
-        this.address = (TextView) findViewById(R.id.address_field);
-        this.url = (TextView) findViewById(R.id.url_field);
+        this.name = findViewById(R.id.name_field);
+        this.icon = findViewById(R.id.icon_field);
+        this.hours = findViewById(R.id.hours_field);
+        this.mins_away = findViewById(R.id.mins_away_field);
+        this.address = findViewById(R.id.address_field);
+        this.url = findViewById(R.id.url_field);
 
-        backButton = findViewById(R.id.detailBackButton);
+        backButton = findViewById(R.id.backbutton);
         backButton.setOnClickListener(this);
 
         //need to set data
@@ -83,7 +82,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.detailBackButton:
+            case R.id.backbutton:
                 startActivity(new Intent(DetailActivity.this, MapsActivity.class));
         }
     }

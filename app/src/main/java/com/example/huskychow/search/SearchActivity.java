@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -35,6 +36,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private EditText searchBar;
     private Button cardButton;
     private Button dollarButton;
+    private ImageButton backButton;
 
     private SearchResultsViewModel model;
     private SearchResultsLayout searchResultsLayout;
@@ -81,6 +83,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         searchBar.requestFocus();
         searchBar.addTextChangedListener(this);
+
+        backButton = findViewById(R.id.backbutton);
+        backButton.setOnClickListener(this);
     }
 
     @Override
@@ -110,6 +115,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                 cardButton.setActivated(false);
                 dollarButton.setActivated(!dollarButton.isActivated());
+                break;
+
+            case R.id.backbutton:
+                startActivity(new Intent(SearchActivity.this, MapsActivity.class));
                 break;
         }
     }
