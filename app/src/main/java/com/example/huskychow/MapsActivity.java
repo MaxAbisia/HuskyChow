@@ -1,7 +1,5 @@
 package com.example.huskychow;
 
-import androidx.fragment.app.FragmentActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -11,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.huskychow.search.SearchActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -91,7 +91,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (v.getId() == R.id.SearchBar) {
-            startActivity(new Intent(MapsActivity.this, SearchActivity.class));
+            Intent intent = new Intent(MapsActivity.this, SearchActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            return true;
         }
         return false;
     }
