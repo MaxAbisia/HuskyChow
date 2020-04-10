@@ -27,6 +27,9 @@ import java.util.Objects;
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     private Map<CurrencyType, ArrayList<Restaurant>> foundRestaurants;
     private Map<Restaurant, Boolean> allRestaurants;
+    private Boolean filterDollars;
+    private Boolean filterSwipes;
+
     GlobalVariables globals;
 
     private EditText searchBar;
@@ -40,6 +43,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     public SearchActivity() {
         allRestaurants = new HashMap<>();
         foundRestaurants = new HashMap<>();
+
+        filterDollars = false;
+        filterSwipes = false;
 
         Restaurant RebeccasCafe = new Restaurant("Rebecca's Cafe",
                 "Churchill Hall, 380 Huntington Ave, Boston, MA 02115", CurrencyType.BOTH);
@@ -82,8 +88,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.cardbutton:
                 if (cardButton.isActivated()) {
+                    filterSwipes = false;
                     showAll();
                 } else {
+                    filterSwipes = true;
                     showOnlySwipes();
                 }
 
@@ -93,8 +101,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.dollarbutton:
                 if (dollarButton.isActivated()) {
+                    filterDollars = false;
                     showAll();
                 } else {
+                    filterDollars = true;
                     showOnlyHuskyDollar();
                 }
 
@@ -111,6 +121,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         String input = searchBar.getText().toString();
+        clearResults();
 
         for (Map.Entry<Restaurant, Boolean> restaurant : allRestaurants.entrySet()) {
 
@@ -127,11 +138,13 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
 
-        ArrayList<Restaurant> results = new ArrayList<>();
-        for (ArrayList<Restaurant> restaurants : foundRestaurants.values()) {
-            results.addAll(restaurants);
+        if (filterDollars) {
+            showOnlyHuskyDollar();
+        } else if (filterSwipes) {
+            showOnlySwipes();
+        } else {
+            showAll();
         }
-        setResults(results);
     }
 
     @Override
