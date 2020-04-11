@@ -37,13 +37,13 @@
 
         <ImageView
             android:id="@+id/icon_field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/huskydollar" />
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/husky_dollars" />
 
     </RelativeLayout>
 

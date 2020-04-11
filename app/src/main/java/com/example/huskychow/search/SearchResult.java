@@ -52,16 +52,15 @@ public class SearchResult extends FrameLayout {
 
         switch (restaurant.getCurrencyType()) {
             case HUSKY_DOLLARS:
-                CurrencyImage.setImageResource(R.drawable.huskydollar);
+                CurrencyImage.setImageResource(R.drawable.husky_dollars_large);
                 break;
             case MEAL_SWIPES:
-                CurrencyImage.setImageResource(R.drawable.swipe);
+                CurrencyImage.setImageResource(R.drawable.husky_swipes_large);
                 break;
             case BOTH:
-                CurrencyImage.setImageResource(R.drawable.swipeanddollar);
+                CurrencyImage.setImageResource(R.drawable.dollars_and_swipes_large);
                 break;
             default:
-                CurrencyImage.setImageResource(R.drawable.swipeanddollar);
                 break;
         }
         postInvalidate();

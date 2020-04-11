@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,8 +30,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     // BUTTONS
     private EditText searchBar;
-    private Button cardButton;
-    private Button dollarButton;
+    private ImageButton cardButton;
+    private ImageButton dollarButton;
 
     Marker rebeccaMarker;
     Marker ivMarker;
@@ -146,33 +147,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.clear();
 
-        BitmapDescriptor huskyDollarIcon =
-                BitmapDescriptorFactory.fromResource(R.drawable.huskydollar);
-        BitmapDescriptor swipeIcon =
-                BitmapDescriptorFactory.fromResource(R.drawable.swipe);
-        BitmapDescriptor swipeAndDollarIcon =
-                BitmapDescriptorFactory.fromResource(R.drawable.swipeanddollar);
-
         // Add a marker in Rebecca's
         rebeccaMarker =
                 mMap.addMarker(new MarkerOptions()
                         .position(rebeccasLocation)
-                        .title("Rebecca's Cafe")
-                        .icon(swipeAndDollarIcon));
+                        .title("Rebecca's Cafe"));
 
         // Add a marker in IV
         ivMarker =
                 mMap.addMarker(new MarkerOptions()
                         .position(ivLocation)
-                        .title("International Village")
-                        .icon(swipeIcon));
+                        .title("International Village"));
 
         // Add a marker in Chicken Lou's
         chickenLousMarker =
                 mMap.addMarker(new MarkerOptions()
                         .position(chickenLousLocation)
-                        .title("Chicken Lou's")
-                        .icon(huskyDollarIcon));
+                        .title("Chicken Lou's"));
+
 
         // move map and set zoom
         mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
@@ -180,6 +172,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // if location already selected
         g = (GlobalVariables) getApplication();
+        setIcons();
+
         String activeRestaurant = g.getValue().toLowerCase();
         if (activeRestaurant.equals("rebecca's cafe")) {
             focusRebeccas();
@@ -189,9 +183,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             focusChickenLous();
         }
 
+
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
+
+                clearSelectedMarker();
 
                 if (marker.equals(rebeccaMarker)) {
                     g.setActiveRestaurant("rebecca's cafe");
@@ -216,11 +213,55 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onMapClick(LatLng latLng) {
                 summaryView.setVisibility(View.GONE);
+                clearSelectedMarker();
             }
         });
     }
 
+    public void clearSelectedMarker() {
+        g.setActiveRestaurant("");
+        setSelectedIcon();
+    }
+
+    public void setIcons() {
+        BitmapDescriptor huskyDollarIcon =
+                BitmapDescriptorFactory.fromResource(R.drawable.husky_dollars);
+        BitmapDescriptor swipeIcon =
+                BitmapDescriptorFactory.fromResource(R.drawable.husky_swipe);
+        BitmapDescriptor swipeAndDollarIcon =
+                BitmapDescriptorFactory.fromResource(R.drawable.dollars_and_swipes);
+
+        rebeccaMarker.setIcon(swipeAndDollarIcon);
+        chickenLousMarker.setIcon(huskyDollarIcon);
+        ivMarker.setIcon(swipeIcon);
+    }
+
+    public void setSelectedIcon() {
+        if (g.getValue().equals("")) {
+            setIcons();
+            return;
+        }
+
+        BitmapDescriptor selectedIcon =
+                BitmapDescriptorFactory.fromResource((R.drawable.paw_print));
+
+        switch (g.getValue().toLowerCase()) {
+            case "rebecca's cafe":
+                rebeccaMarker.setIcon(selectedIcon);
+                break;
+            case "international village":
+                ivMarker.setIcon(selectedIcon);
+                break;
+            case "chicken lou's":
+                chickenLousMarker.setIcon(selectedIcon);
+                break;
+            default:
+                break;
+        }
+    }
+
     public void focusRebeccas() {
+        setSelectedIcon();
         mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(rebeccasLocation));
         setRebeccaSummary();
@@ -228,6 +269,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void focusIV() {
+        setSelectedIcon();
         mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(ivLocation));
         setIVSummary();
@@ -235,6 +277,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void focusChickenLous() {
+        setSelectedIcon();
         mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
         setChickenLousSummary();
@@ -246,7 +289,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryHours.setText("8:00 am – 4:00 pm");
         summaryDistance.setText("4 minutes away");
 
-        summaryCurrency.setImageResource(R.drawable.swipeanddollar);
+        summaryCurrency.setImageResource(R.drawable.dollars_and_swipes_large);
     }
 
     public void setIVSummary() {
@@ -254,7 +297,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryHours.setText("7:00 am – 9:00 pm");
         summaryDistance.setText("12 minutes away");
 
-        summaryCurrency.setImageResource(R.drawable.swipe);
+        summaryCurrency.setImageResource(R.drawable.husky_swipes_large);
     }
 
     public void setChickenLousSummary() {
@@ -262,7 +305,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryHours.setText("7:30 am - 2:00 pm");
         summaryDistance.setText("2 minutes away");
 
-        summaryCurrency.setImageResource(R.drawable.huskydollar);
+        summaryCurrency.setImageResource(R.drawable.husky_dollars_large);
     }
 
     public void showOnlyHuskyDollar() {

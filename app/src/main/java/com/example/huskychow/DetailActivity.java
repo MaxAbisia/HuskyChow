@@ -54,7 +54,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 
     public void setRebeccas() {
         this.name.setText("Rebecca's Cafe");
-        this.icon.setImageResource(R.drawable.swipeanddollar);
+        this.icon.setImageResource(R.drawable.dollars_and_swipes_large);
         this.hours.setText("8:00 am - 4:00 pm");
         this.mins_away.setText("4 minutes away.");
         this.address.setText("Churchill Hall, 380 Huntington Ave, Boston, MA 02115");
@@ -63,7 +63,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 
     public void setIV() {
         this.name.setText("International Village");
-        this.icon.setImageResource(R.drawable.swipe);
+        this.icon.setImageResource(R.drawable.husky_swipes_large);
         this.hours.setText("7:00 am - 10:00 pm");
         this.mins_away.setText("12 minutes away.");
         this.address.setText("1155 Tremont St, Boston, MA 02120");
@@ -72,7 +72,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 
     public void setChickenLous() {
         this.name.setText("Chicken Lou's");
-        this.icon.setImageResource(R.drawable.huskydollar);
+        this.icon.setImageResource(R.drawable.husky_dollars_large);
         this.hours.setText("7:30 am - 2:00 pm");
         this.mins_away.setText("2 minutes away.");
         this.address.setText("50 Forsyth St, Boston, MA 02115");

@@ -37,7 +37,7 @@
             android:background="@color/colorPrimaryDark"
             android:src="@drawable/ic_back_light" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cardbutton"
             android:layout_width="80dp"
             android:layout_height="40dp"
@@ -46,11 +46,12 @@
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@id/dollarbutton"
             android:background="@drawable/selector_button"
-            android:drawableLeft="@drawable/ic_credit_card_black_24dp"
+            android:src="@drawable/husky_swipe"
+            android:paddingRight="30dp"
             android:gravity="center"
             android:paddingLeft="30dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/dollarbutton"
             android:layout_width="80dp"
             android:layout_height="40dp"
@@ -59,8 +60,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/selector_button"
-            android:drawableLeft="@drawable/huskydollar"
-            android:drawablePadding="5dp"
+            android:src="@drawable/husky_dollars"
+            android:paddingEnd="30dp"
             android:gravity="center"
             android:paddingLeft="29dp" />
     </RelativeLayout>

@@ -34,8 +34,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     GlobalVariables globals;
 
     private EditText searchBar;
-    private Button cardButton;
-    private Button dollarButton;
+    private ImageButton cardButton;
+    private ImageButton dollarButton;
     private ImageButton backButton;
 
     private SearchResultsViewModel model;
@@ -50,10 +50,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         filterSwipes = false;
 
         Restaurant RebeccasCafe = new Restaurant("Rebecca's Cafe",
-                "Churchill Hall, 380 Huntington Ave, Boston, MA 02115", CurrencyType.BOTH);
-        Restaurant IV = new Restaurant("International Village", "1155 Tremont St, Boston, MA 02120",
+                "Churchill Hall, 380 Huntington Ave, Boston, MA", CurrencyType.BOTH);
+        Restaurant IV = new Restaurant("International Village", "1155 Tremont St, Boston, MA",
                 CurrencyType.MEAL_SWIPES);
-        Restaurant ChickenLous= new Restaurant("Chicken Lou's", "50 Forsyth St, Boston, MA 02115",
+        Restaurant ChickenLous= new Restaurant("Chicken Lou's", "50 Forsyth St, Boston, MA",
                 CurrencyType.HUSKY_DOLLARS);
 
         allRestaurants.put(RebeccasCafe, false);

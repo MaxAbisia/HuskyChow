@@ -28,32 +28,33 @@
             android:singleLine="true"
             android:backgroundTint="@color/white" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cardbutton"
             android:layout_width="80dp"
             android:layout_height="40dp"
+            android:layout_gravity="end"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_gravity="end"
             android:layout_toStartOf="@id/dollarbutton"
             android:background="@drawable/selector_button"
-            android:drawableLeft="@drawable/ic_credit_card_black_24dp"
+            android:src="@drawable/husky_swipe"
+            android:paddingRight="30dp"
             android:gravity="center"
             android:paddingLeft="30dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/dollarbutton"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_gravity="end"
-            android:drawableLeft="@drawable/huskydollar"
-            android:drawablePadding="5dp"
-            android:paddingLeft="29dp"
             android:background="@drawable/selector_button"
-            android:gravity="center"/>
+            android:src="@drawable/husky_dollars"
+            android:paddingEnd="30dp"
+            android:gravity="center"
+            android:paddingLeft="29dp" />
     </RelativeLayout>
 
 <!--    <RelativeLayout-->
@@ -129,10 +130,11 @@
 
             <ImageView
                 android:id="@+id/summaryCurrency"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
+                android:layout_marginTop="-10dp"
                 android:src="@drawable/swipeanddollar" />
 
         </RelativeLayout>
