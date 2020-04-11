@@ -21,6 +21,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -48,6 +49,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LatLng rebeccasLocation = new LatLng(42.338975, -71.088670);
     LatLng ivLocation = new LatLng(42.335376, -71.089357);
     LatLng chickenLousLocation = new LatLng(42.339279, -71.090179);
+
+    private static final LatLng BOUND_CORNER_NW = new LatLng(42.347584, -71.108803);
+    private static final LatLng BOUND_CORNER_SE = new LatLng(42.332669, -71.077763);
+    private static final LatLngBounds RESTRICTED_BOUNDS_AREA = new LatLngBounds.Builder()
+            .include(BOUND_CORNER_NW)
+            .include(BOUND_CORNER_SE)
+            .build();
 
     GlobalVariables g;
 
@@ -147,6 +155,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.clear();
 
+        mMap.setLatLngBoundsForCameraTarget(RESTRICTED_BOUNDS_AREA);
+        mMap.setMinZoomPreference(14);
+        mMap.setMaxZoomPreference(20);
+        mMap.getUiSettings().setTiltGesturesEnabled(false);
+
         // Add a marker in Rebecca's
         rebeccaMarker =
                 mMap.addMarker(new MarkerOptions()
@@ -164,7 +177,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions()
                         .position(chickenLousLocation)
                         .title("Chicken Lou's"));
-
 
         // move map and set zoom
         mMap.moveCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
