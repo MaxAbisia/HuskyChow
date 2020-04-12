@@ -149,7 +149,7 @@ class RestaurantList {
         this.restaurants.add(theMarket);
     }
 
-    public ArrayList<Restaurant> getRestaurants() {
+    ArrayList<Restaurant> getRestaurants() {
         return restaurants;
     }
 }
