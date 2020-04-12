@@ -8,6 +8,7 @@ class RestaurantList {
 
     RestaurantList() {
 
+        // ON CAMPUS
         Restaurant rebeccas = new Restaurant(
                 "Rebecca's Cafe",
                 "Churchill Hall - 380 Huntington Ave",
@@ -127,6 +128,8 @@ class RestaurantList {
                 CurrencyType.HUSKY_DOLLARS,
                 42.339349, -71.087712);
 
+
+        //ON CAMPUS
         this.restaurants.add(rebeccas);
         this.restaurants.add(iv);
         this.restaurants.add(chickenLous);
