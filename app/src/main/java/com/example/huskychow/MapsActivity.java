@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -50,7 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LatLng chickenLousLocation = new LatLng(42.339279, -71.090179);
 
     private static final LatLng BOUND_CORNER_NW = new LatLng(42.347584, -71.108803);
-    private static final LatLng BOUND_CORNER_SE = new LatLng(42.332669, -71.077763);
+    private static final LatLng BOUND_CORNER_SE = new LatLng(42.330500, -71.077609);
     private static final LatLngBounds RESTRICTED_BOUNDS_AREA = new LatLngBounds.Builder()
             .include(BOUND_CORNER_NW)
             .include(BOUND_CORNER_SE)
@@ -162,14 +163,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMaxZoomPreference(20);
         mMap.getUiSettings().setTiltGesturesEnabled(false);
 
-        // Add a marker in Rebecca's
-        rebeccaMarker =
-                mMap.addMarker(new MarkerOptions()
-                        .position(rebeccasLocation)
-                        .title("Rebecca's Cafe"));
+        // removed google maps location pins
+        // create a new json file here: https://mapstyle.withgoogle.com/
+        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(
+                        this, R.raw.map_style));
 
-        // Add a marker in IV
-        ivMarker =
         for (Restaurant res : restaurantList.getRestaurants()) {
             res.setMarker(
                     mMap.addMarker(new MarkerOptions()
