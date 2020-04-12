@@ -21,11 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/name_field"
-            android:layout_width="match_parent"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
@@ -33,6 +33,7 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:layout_alignParentStart="true"
             tools:text="Title" />
 
         <ImageView
@@ -57,7 +58,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        tools:text="12:00 am - 12:00 pm" />
 
     <TextView
         android:id="@+id/mins_away_field"
@@ -69,7 +71,9 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        tools:text="12 min away"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/address_field"
@@ -81,7 +85,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        tools:text="132 Huntington Ave" />
 
     <TextView
         android:id="@+id/url_field"
@@ -93,15 +98,17 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/blueDark"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        tools:text="12Titles.org" />
 
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp">
 
         <Button
             android:id="@+id/navigateButton"

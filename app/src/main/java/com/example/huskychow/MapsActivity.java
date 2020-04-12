@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.huskychow.search.SearchActivity;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -24,18 +25,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener, View.OnTouchListener {
 
     private GoogleMap mMap;
+
+    RestaurantList restaurantList;
 
     // BUTTONS
     private EditText searchBar;
     private ImageButton cardButton;
     private ImageButton dollarButton;
-
-    Marker rebeccaMarker;
-    Marker ivMarker;
-    Marker chickenLousMarker;
 
     LinearLayout summaryView;
     TextView summaryTitle;
@@ -45,8 +46,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Button summaryNavButton;
     Button summaryDetailsButton;
 
-    LatLng rebeccasLocation = new LatLng(42.338975, -71.088670);
-    LatLng ivLocation = new LatLng(42.335376, -71.089357);
     LatLng chickenLousLocation = new LatLng(42.339279, -71.090179);
 
     GlobalVariables g;
@@ -55,10 +54,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        restaurantList = new RestaurantList();
 
         //buttons
         searchBar = findViewById(R.id.SearchBar);
@@ -147,23 +149,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.clear();
 
-        // Add a marker in Rebecca's
-        rebeccaMarker =
-                mMap.addMarker(new MarkerOptions()
-                        .position(rebeccasLocation)
-                        .title("Rebecca's Cafe"));
-
-        // Add a marker in IV
-        ivMarker =
-                mMap.addMarker(new MarkerOptions()
-                        .position(ivLocation)
-                        .title("International Village"));
-
-        // Add a marker in Chicken Lou's
-        chickenLousMarker =
-                mMap.addMarker(new MarkerOptions()
-                        .position(chickenLousLocation)
-                        .title("Chicken Lou's"));
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            res.setMarker(
+                    mMap.addMarker(new MarkerOptions()
+                            .position(res.getLocation()))
+            );
+        }
 
 
         // move map and set zoom
@@ -174,40 +165,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         g = (GlobalVariables) getApplication();
         setIcons();
 
-        String activeRestaurant = g.getValue().toLowerCase();
-        if (activeRestaurant.equals("rebecca's cafe")) {
-            focusRebeccas();
-        } else if (activeRestaurant.equals("international village")) {
-            focusIV();
-        } else if (activeRestaurant.equals("chicken lou's")) {
-            focusChickenLous();
+        // if there is a restaurant already active (from search) then focus on that restaurant
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            if (res.getName().equals(g.getValue())) {
+                focus(res.getLocation(), res.getName(), res.getHours(), res.getCurrencyType());
+            }
         }
 
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(final Marker marker) {
+        mMap.setOnMarkerClickListener(
+                new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(final Marker marker) {
 
-                clearSelectedMarker();
+                        clearSelectedMarker();
 
-                if (marker.equals(rebeccaMarker)) {
-                    g.setActiveRestaurant("rebecca's cafe");
-                    focusRebeccas();
-                    return true;
-                }
-                if (marker.equals(ivMarker)) {
-                    g.setActiveRestaurant("international village");
-                    focusIV();
-                    return true;
-                }
-                if (marker.equals(chickenLousMarker)) {
-                    g.setActiveRestaurant("chicken lou's");
-                    focusChickenLous();
-                    return true;
-                }
-                return false;
-            }
-        });
+                        for (Restaurant res : restaurantList.getRestaurants()) {
+                            if (res.getMarker().equals(marker)) {
+                                g.setActiveRestaurant(res.getName());
+                                focus(res.getLocation(), res.getName(), res.getHours(), res.getCurrencyType());
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                });
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
@@ -231,9 +213,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         BitmapDescriptor swipeAndDollarIcon =
                 BitmapDescriptorFactory.fromResource(R.drawable.dollars_and_swipes);
 
-        rebeccaMarker.setIcon(swipeAndDollarIcon);
-        chickenLousMarker.setIcon(huskyDollarIcon);
-        ivMarker.setIcon(swipeIcon);
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            if (res.getCurrencyType().equals(CurrencyType.HUSKY_DOLLARS)) {
+                res.getMarker().setIcon(huskyDollarIcon);
+            }
+            if (res.getCurrencyType().equals(CurrencyType.MEAL_SWIPES)) {
+                res.getMarker().setIcon(swipeIcon);
+            }
+            if (res.getCurrencyType().equals(CurrencyType.BOTH)) {
+                res.getMarker().setIcon(swipeAndDollarIcon);
+            }
+        }
     }
 
     public void setSelectedIcon() {
@@ -245,81 +235,56 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         BitmapDescriptor selectedIcon =
                 BitmapDescriptorFactory.fromResource((R.drawable.paw_print));
 
-        switch (g.getValue().toLowerCase()) {
-            case "rebecca's cafe":
-                rebeccaMarker.setIcon(selectedIcon);
-                break;
-            case "international village":
-                ivMarker.setIcon(selectedIcon);
-                break;
-            case "chicken lou's":
-                chickenLousMarker.setIcon(selectedIcon);
-                break;
-            default:
-                break;
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            if (res.getName().equals(g.getValue())) {
+                res.getMarker().setIcon(selectedIcon);
+            }
         }
     }
 
-    public void focusRebeccas() {
+    public void focus(LatLng location, String title, String hours, CurrencyType currencyType) {
         setSelectedIcon();
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
-        mMap.animateCamera(CameraUpdateFactory.newLatLng(rebeccasLocation));
-        setRebeccaSummary();
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(location));
+
+        summaryTitle.setText(title);
+        summaryHours.setText(hours);
+        summaryDistance.setText("");
+
+        if (currencyType == CurrencyType.BOTH) {
+            summaryCurrency.setImageResource(R.drawable.dollars_and_swipes_large);
+        } else if (currencyType == CurrencyType.HUSKY_DOLLARS) {
+            summaryCurrency.setImageResource(R.drawable.husky_dollars_large);
+        } else if (currencyType == CurrencyType.MEAL_SWIPES) {
+            summaryCurrency.setImageResource(R.drawable.husky_swipes_large);
+        }
+
         summaryView.setVisibility(View.VISIBLE);
-    }
-
-    public void focusIV() {
-        setSelectedIcon();
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
-        mMap.animateCamera(CameraUpdateFactory.newLatLng(ivLocation));
-        setIVSummary();
-        summaryView.setVisibility(View.VISIBLE);
-    }
-
-    public void focusChickenLous() {
-        setSelectedIcon();
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
-        mMap.animateCamera(CameraUpdateFactory.newLatLng(chickenLousLocation));
-        setChickenLousSummary();
-        summaryView.setVisibility(View.VISIBLE);
-    }
-
-    public void setRebeccaSummary() {
-        summaryTitle.setText("Rebecca's Cafe");
-        summaryHours.setText("8:00 am – 4:00 pm");
-        summaryDistance.setText("4 minutes away");
-
-        summaryCurrency.setImageResource(R.drawable.dollars_and_swipes_large);
-    }
-
-    public void setIVSummary() {
-        summaryTitle.setText("International Village");
-        summaryHours.setText("7:00 am – 9:00 pm");
-        summaryDistance.setText("12 minutes away");
-
-        summaryCurrency.setImageResource(R.drawable.husky_swipes_large);
-    }
-
-    public void setChickenLousSummary() {
-        summaryTitle.setText("Chicken Lou's");
-        summaryHours.setText("7:30 am - 2:00 pm");
-        summaryDistance.setText("2 minutes away");
-
-        summaryCurrency.setImageResource(R.drawable.husky_dollars_large);
     }
 
     public void showOnlyHuskyDollar() {
-        ivMarker.setVisible(false);
-        chickenLousMarker.setVisible(true);
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            if (res.getCurrencyType() == CurrencyType.MEAL_SWIPES) {
+                res.getMarker().setVisible(false);
+            } else {
+                res.getMarker().setVisible(true);
+            }
+        }
     }
 
     public void showOnlySwipes() {
-        chickenLousMarker.setVisible(false);
-        ivMarker.setVisible(true);
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            if (res.getCurrencyType() == CurrencyType.HUSKY_DOLLARS) {
+                res.getMarker().setVisible(false);
+            } else {
+                res.getMarker().setVisible(true);
+            }
+        }
     }
 
     public void showAll() {
-        chickenLousMarker.setVisible(true);
-        ivMarker.setVisible(true);
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            res.getMarker().setVisible(true);
+        }
     }
 }

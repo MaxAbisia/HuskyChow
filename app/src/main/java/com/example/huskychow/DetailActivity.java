@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentActivity;
 
 public class DetailActivity extends FragmentActivity implements OnClickListener {
 
+    RestaurantList restaurantList = new RestaurantList();
+
     //fields
     private TextView name;
     private ImageView icon;
@@ -28,25 +30,41 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 
         //connecting to xml code
         this.name = findViewById(R.id.name_field);
-        this.icon = findViewById(R.id.icon_field);
+        this.address = findViewById(R.id.address_field);
         this.hours = findViewById(R.id.hours_field);
         this.mins_away = findViewById(R.id.mins_away_field);
-        this.address = findViewById(R.id.address_field);
         this.url = findViewById(R.id.url_field);
+        this.icon = findViewById(R.id.icon_field);
 
         backButton = findViewById(R.id.backbutton);
         backButton.setOnClickListener(this);
 
-        //need to set data
         GlobalVariables g = (GlobalVariables) getApplication();
-        String activeRestaurant = g.getValue().toLowerCase();
-        if (activeRestaurant.equals("rebecca's cafe")) {
-            setRebeccas();
-        } else if (activeRestaurant.equals("international village")) {
-            setIV();
-        } else if (activeRestaurant.equals("chicken lou's")) {
-            setChickenLous();
+
+        // if restaurant is selected, set the detail info
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            if (res.getName().equals(g.getValue())) {
+                setDetails(res);
+            }
         }
+
+//        String activeRestaurant = g.getValue().toLowerCase();
+//        if (activeRestaurant.equals("rebecca's cafe")) {
+//            setRebeccas();
+//        } else if (activeRestaurant.equals("international village")) {
+//            setIV();
+//        } else if (activeRestaurant.equals("chicken lou's")) {
+//            setChickenLous();
+//        }
+    }
+
+    public void setDetails(Restaurant res) {
+        this.name.setText(res.getName());
+        this.address.setText(res.getAddress());
+        this.hours.setText(res.getHours());
+        if (res.getUrl().equals("")) {
+            this.url.setVisibility(View.GONE);
+        } else this.url.setText(res.getUrl());
     }
 
     //void methods to populate data needed by the view

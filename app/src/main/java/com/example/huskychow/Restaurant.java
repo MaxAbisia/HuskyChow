@@ -1,35 +1,40 @@
 package com.example.huskychow;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+
 //This class represents a single restaurant near campus
 public class Restaurant {
 
     //the name of the restaurant
-    private String name;
+    private String name = "";
 
     //the address of the restaurant
-    private String address;
+    private String address = "";
 
     //a link to the url hosting this Restaurant's website
-    private String url;
+    private String url = "";
 
     //the opening and closing time
-    private String hours;
+    private String hours = "";
 
     //the type of currency the restaurant accepts: husky dollars, meal swipes, or both
     private CurrencyType currencyType;
 
-    //the relative price of the restaurant: high, medium, or low
-    private RestaurantPrice price;
+    //cartesian coordinate of the restauraunt
+    private LatLng location = new LatLng(0, 0);
+
+    // Google Maps marker
+    private Marker marker;
 
     //constructor for a Restaurant object
-    public Restaurant(String name, String address, String url, String hours,
-                      CurrencyType currencyType, RestaurantPrice price) {
+    public Restaurant(String name, String address, String hours,
+                      CurrencyType currencyType, double lat, double lon) {
         this.name = name;
         this.address = address;
-        this.url = url;
         this.hours = hours;
         this.currencyType = currencyType;
-        this.price = price;
+        this.location = new LatLng(lat, lon);
     }
 
     public Restaurant(String name, String address, CurrencyType currencyType) {
@@ -61,8 +66,18 @@ public class Restaurant {
         return this.currencyType;
     }
 
-    //return the RestaurantPrice of the restaurant.
-    public RestaurantPrice getPrice() {
-        return this.price;
+    //getter for the location
+    public LatLng getLocation() {
+        return this.location;
+    }
+
+    //setter for the marker
+    void setMarker(Marker m) {
+        this.marker = m;
+    }
+
+    //getter for the marker
+    public Marker getMarker() {
+        return this.marker;
     }
 }
