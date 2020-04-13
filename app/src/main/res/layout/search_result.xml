@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/PlaceName"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginStart="4dp"

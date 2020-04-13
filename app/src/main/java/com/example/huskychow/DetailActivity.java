@@ -53,6 +53,21 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
         this.name.setText(res.getName());
         this.address.setText(res.getAddress());
         this.hours.setText(res.getHours());
+
+        switch (res.getCurrencyType()) {
+            case HUSKY_DOLLARS:
+                icon.setImageResource(R.drawable.husky_dollars);
+                break;
+            case MEAL_SWIPES:
+                icon.setImageResource(R.drawable.husky_swipe);
+                break;
+            case BOTH:
+                icon.setImageResource(R.drawable.dollars_and_swipes);
+                break;
+            default:
+                break;
+        }
+
         if (res.getUrl().equals("")) {
             this.url.setVisibility(View.GONE);
         } else this.url.setText(res.getUrl());

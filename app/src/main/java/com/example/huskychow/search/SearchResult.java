@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.example.huskychow.CurrencyType;
 import com.example.huskychow.R;
 import com.example.huskychow.Restaurant;
 
@@ -52,13 +51,13 @@ public class SearchResult extends FrameLayout {
 
         switch (restaurant.getCurrencyType()) {
             case HUSKY_DOLLARS:
-                CurrencyImage.setImageResource(R.drawable.husky_dollars_large);
+                CurrencyImage.setImageResource(R.drawable.husky_dollars);
                 break;
             case MEAL_SWIPES:
-                CurrencyImage.setImageResource(R.drawable.husky_swipes_large);
+                CurrencyImage.setImageResource(R.drawable.husky_swipe);
                 break;
             case BOTH:
-                CurrencyImage.setImageResource(R.drawable.dollars_and_swipes_large);
+                CurrencyImage.setImageResource(R.drawable.dollars_and_swipes);
                 break;
             default:
                 break;

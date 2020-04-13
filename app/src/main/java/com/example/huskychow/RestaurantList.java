@@ -256,7 +256,7 @@ public class RestaurantList {
                 "Ruggles T Station",
                 "6:30 am - 8:00 pm",
                 CurrencyType.HUSKY_DOLLARS,
-                42.349995, -71.082717);
+                42.337495, -71.089270);
 
         Restaurant panera =  new Restaurant(
                 "Panera Bread",

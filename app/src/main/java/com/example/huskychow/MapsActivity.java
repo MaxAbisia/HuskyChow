@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.huskychow.search.SearchActivity;
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,8 +25,6 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener, View.OnTouchListener {
 
@@ -50,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     LatLng chickenLousLocation = new LatLng(42.339279, -71.090179);
 
-    private static final LatLng BOUND_CORNER_NW = new LatLng(42.347584, -71.108803);
+    private static final LatLng BOUND_CORNER_NW = new LatLng(42.354308, -71.123175);
     private static final LatLng BOUND_CORNER_SE = new LatLng(42.330500, -71.077609);
     private static final LatLngBounds RESTRICTED_BOUNDS_AREA = new LatLngBounds.Builder()
             .include(BOUND_CORNER_NW)
@@ -270,11 +267,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         summaryDistance.setText("");
 
         if (currencyType == CurrencyType.BOTH) {
-            summaryCurrency.setImageResource(R.drawable.dollars_and_swipes_large);
+            summaryCurrency.setImageResource(R.drawable.dollars_and_swipes);
         } else if (currencyType == CurrencyType.HUSKY_DOLLARS) {
-            summaryCurrency.setImageResource(R.drawable.husky_dollars_large);
+            summaryCurrency.setImageResource(R.drawable.husky_dollars);
         } else if (currencyType == CurrencyType.MEAL_SWIPES) {
-            summaryCurrency.setImageResource(R.drawable.husky_swipes_large);
+            summaryCurrency.setImageResource(R.drawable.husky_swipe);
         }
 
         summaryView.setVisibility(View.VISIBLE);
