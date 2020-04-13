@@ -157,8 +157,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setLatLngBoundsForCameraTarget(RESTRICTED_BOUNDS_AREA);
         mMap.setMinZoomPreference(14);
-        mMap.setMaxZoomPreference(20);
+        mMap.setMaxZoomPreference(18);
         mMap.getUiSettings().setTiltGesturesEnabled(false);
+        mMap.getUiSettings().setIndoorLevelPickerEnabled(false);
 
         // removed google maps location pins
         // create a new json file here: https://mapstyle.withgoogle.com/
