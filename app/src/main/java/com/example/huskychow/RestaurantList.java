@@ -223,6 +223,104 @@ public class RestaurantList {
                 CurrencyType.HUSKY_DOLLARS,
                 42.331237, -71.095354);
 
+        Restaurant ohe =  new Restaurant(
+                "Dos Diablos Taco Bar & Two Saints Tavern",
+                "52 Gainsborough St",
+                "4:00 pm - 2:00 am",
+                CurrencyType.HUSKY_DOLLARS,
+                42.342270, -71.087266);
+
+        Restaurant giovannis =  new Restaurant(
+                "Giovanni’s Market",
+                "624 Columbus Avenue",
+                "8:30 am - 10:45 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.339465, -71.083138);
+
+        Restaurant gyro =  new Restaurant(
+                "Gyroscope",
+                "305 Huntington Ave",
+                "11:00 am - 9:30 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.341945, -71.087267);
+
+        Restaurant lobster =  new Restaurant(
+                "Lobstah on a Roll",
+                "537 Columbus Ave",
+                "10:30 am - 8:00 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.349995, -71.082717);
+
+        Restaurant noble =  new Restaurant(
+                "Noble Roman’s Pizza",
+                "Ruggles T Station",
+                "6:30 am - 8:00 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.349995, -71.082717);
+
+        Restaurant panera =  new Restaurant(
+                "Panera Bread",
+                "289 Huntington Ave",
+                "7:00 am - 8:00 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.342341, -71.086531);
+
+        Restaurant phoAndI =  new Restaurant(
+                "Pho & I",
+                "267 Huntington Avenue",
+                "11:30 am - 9:45 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.342913, -71.086142);
+
+        Restaurant sprout =  new Restaurant(
+                "Sprout",
+                "305 Huntington Ave",
+                "11:00 am - 9:30 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.341945, -71.087267);
+
+        Restaurant symphMarket =  new Restaurant(
+                "Symphony Market",
+                "291 Huntington Avenue",
+                "6:00 am - 2:00 am",
+                CurrencyType.HUSKY_DOLLARS,
+                42.342107, -71.086738);
+
+        Restaurant uhop =  new Restaurant(
+                "University House of Pizza",
+                "42.342107, -71.086738",
+                "11:00 am - 1:00 am",
+                CurrencyType.HUSKY_DOLLARS,
+                42.338673, -71.093057);
+
+        Restaurant wholefoods =  new Restaurant(
+                "Whole Foods Market",
+                "15 Westland Ave",
+                "7:00 am - 10:00 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.343851, -71.087312);
+
+        Restaurant wingsover =  new Restaurant(
+                "Wings Over Boston",
+                "325 Huntington Ave",
+                "4:00 Pm - 2:00 Am",
+                CurrencyType.HUSKY_DOLLARS,
+                42.341010, -71.088088);
+
+        Restaurant energize =  new Restaurant(
+                "Energize",
+                "265 Massachusetts Ave",
+                "9:30 am - 7:00 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.343738, -71.086330);
+
+        Restaurant poke =  new Restaurant(
+                "Poke Station",
+                "313 Huntington Ave",
+                "11:00 am - 10:00 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.341275, -71.087673);
+
         //ON CAMPUS
         this.restaurants.add(rebeccas);
         this.restaurants.add(iv);
@@ -256,6 +354,20 @@ public class RestaurantList {
         this.restaurants.add(cvs);
         this.restaurants.add(dominosBolyston);
         this.restaurants.add(dominosTremont);
+        this.restaurants.add(ohe);
+        this.restaurants.add(giovannis);
+        this.restaurants.add(gyro);
+        this.restaurants.add(lobster);
+        this.restaurants.add(noble);
+        this.restaurants.add(panera);
+        this.restaurants.add(phoAndI);
+        this.restaurants.add(sprout);
+        this.restaurants.add(symphMarket);
+        this.restaurants.add(uhop);
+        this.restaurants.add(wholefoods);
+        this.restaurants.add(wingsover);
+        this.restaurants.add(energize);
+        this.restaurants.add(poke);
     }
 
     public ArrayList<Restaurant> getRestaurants() {
