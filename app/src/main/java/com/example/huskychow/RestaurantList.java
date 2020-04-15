@@ -145,7 +145,7 @@ public class RestaurantList {
         Restaurant uburger = new Restaurant(
                 "UBURGER",
                 "Curry Student Center",
-                "11:00 am - 5:00 pm",
+                "11:00 am - 8:00 pm",
                 CurrencyType.HUSKY_DOLLARS,
                 42.339246, -71.087499);
 
@@ -162,6 +162,27 @@ public class RestaurantList {
                 "7:00 am - 12:00 am",
                 CurrencyType.HUSKY_DOLLARS,
                 42.337356, -71.092176);
+
+        Restaurant subway = new Restaurant(
+                "Subway",
+                "11 Leon St (Ryder Hall)",
+                "8:00 am - 8:30 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.336448, -71.090752);
+
+        Restaurant tuTaco = new Restaurant(
+                "Tu Taco",
+                "Curry Student Center",
+                "11:00 am - 7:00 pm",
+                CurrencyType.HUSKY_DOLLARS,
+                42.338951, -71.087545);
+
+        Restaurant westEnd = new Restaurant(
+                "The West End",
+                "Curry Student Center",
+                "11:00 am - 7:00 pm",
+                CurrencyType.BOTH,
+                42.339146, -71.087612);
 
 
 
@@ -344,6 +365,9 @@ public class RestaurantList {
         this.restaurants.add(uburger);
         this.restaurants.add(smallastons);
         this.restaurants.add(wollastons);
+        this.restaurants.add(subway);
+        this.restaurants.add(westEnd);
+        this.restaurants.add(tuTaco);
 
         //OFF CAMPUS
         this.restaurants.add(amelias);
