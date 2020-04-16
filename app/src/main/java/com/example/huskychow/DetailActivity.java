@@ -142,7 +142,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "Here's the Address for " + resName + ":\n" + resAddress;
+        String shareBody = "Here's the address for " + resName + ":\n" + resAddress;
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
