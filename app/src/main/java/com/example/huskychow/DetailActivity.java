@@ -77,6 +77,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+
             case R.id.backbutton:
                 this.startActivity(new Intent(DetailActivity.this, MapsActivity.class));
                 this.finish();

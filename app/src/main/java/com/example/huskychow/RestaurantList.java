@@ -59,7 +59,7 @@ public class RestaurantList {
                 42.337937, -71.086962);
 
         Restaurant dunkinShillman = new Restaurant(
-                "Dunkin'",
+                "Dunkin' Shillman Hall",
                 "115 Forsyth Street (Shillman)",
                 "7:00 am - 6:00 pm",
                 CurrencyType.HUSKY_DOLLARS,

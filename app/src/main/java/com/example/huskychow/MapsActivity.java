@@ -1,6 +1,7 @@
 package com.example.huskychow;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -131,9 +132,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 dollarButton.setActivated(!dollarButton.isActivated());
                 break;
 
+            case R.id.summaryNav:
+                goMaps();
+                break;
+
             case R.id.summaryDetails:
-
-
             case R.id.summary_view:
                 startActivity(new Intent(MapsActivity.this, DetailActivity.class));
                 break;
@@ -164,7 +167,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // removed google maps location pins
         // create a new json file here: https://mapstyle.withgoogle.com/
         mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(
-                        this, R.raw.map_style));
+                this, R.raw.map_style));
 
         for (Restaurant res : restaurantList.getRestaurants()) {
             res.setMarker(
@@ -302,5 +305,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (Restaurant res : restaurantList.getRestaurants()) {
             res.getMarker().setVisible(true);
         }
+    }
+
+    public void goMaps() {
+        String resAddress = "";
+        String resName = "";
+        for (Restaurant res : restaurantList.getRestaurants()) {
+            if (g.getValue().equals(res.getName())) {
+                resAddress = res.getAddress();
+                resName = res.getName();
+            }
+        }
+        // Create a Uri from an intent string. Use the result to create an Intent.
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + resName + resAddress + " Boston, MA");
+
+        // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        // Make the Intent explicit by setting the Google Maps package
+        mapIntent.setPackage("com.google.android.apps.maps");
+
+        // Attempt to start an activity that can handle the Intent
+        startActivity(mapIntent);
     }
 }

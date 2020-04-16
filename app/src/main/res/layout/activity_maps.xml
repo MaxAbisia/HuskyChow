@@ -105,13 +105,14 @@
     <LinearLayout
         android:id="@+id/summary_view"
         android:layout_width="match_parent"
-        android:layout_height="265dp"
+        android:layout_height="280dp"
         android:layout_gravity="bottom"
         android:background="@color/white"
-        android:orientation="vertical"
         android:elevation="10dp"
-        android:translationZ="10dp"
+        android:orientation="vertical"
         android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:translationZ="10dp"
         android:visibility="invisible">
 
         <RelativeLayout
@@ -133,8 +134,8 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
                 android:layout_marginTop="-10dp"
+                android:layout_marginEnd="10dp"
                 android:src="@drawable/swipeanddollar" />
 
         </RelativeLayout>
@@ -160,19 +161,24 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:visibility="gone" />
 
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="26dp">
+            android:layout_height="50dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="bottom">
 
             <Button
                 android:id="@+id/summaryNav"
                 android:layout_width="160dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:text="NAVIGATE"
@@ -182,7 +188,7 @@
             <Button
                 android:id="@+id/summaryDetails"
                 android:layout_width="160dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@color/colorPrimaryDark"
