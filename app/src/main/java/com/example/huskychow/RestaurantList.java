@@ -210,7 +210,7 @@ public class RestaurantList {
                 42.341023, -71.087715);
 
         Restaurant cappys = new Restaurant(
-                "Cappy’s Pizza & Subs",
+                "Cappy’s Pizza and Subs",
                 "82 Westland Avenue",
                 "6:30 am - 2:00 am",
                 CurrencyType.HUSKY_DOLLARS,
@@ -245,7 +245,7 @@ public class RestaurantList {
                 42.331237, -71.095354);
 
         Restaurant ohe =  new Restaurant(
-                "Dos Diablos Taco Bar & Two Saints Tavern",
+                "Dos Diablos Taco Bar and Two Saints Tavern",
                 "52 Gainsborough St",
                 "4:00 pm - 2:00 am",
                 CurrencyType.HUSKY_DOLLARS,
@@ -287,7 +287,7 @@ public class RestaurantList {
                 42.342341, -71.086531);
 
         Restaurant phoAndI =  new Restaurant(
-                "Pho & I",
+                "Pho and I",
                 "267 Huntington Avenue",
                 "11:30 am - 9:45 pm",
                 CurrencyType.HUSKY_DOLLARS,

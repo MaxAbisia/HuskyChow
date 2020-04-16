@@ -263,6 +263,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void focus(LatLng location, String title, String hours, CurrencyType currencyType) {
         setSelectedIcon();
+
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(location));
 
@@ -317,7 +318,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
         // Create a Uri from an intent string. Use the result to create an Intent.
-        Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + resName + resAddress + " Boston, MA");
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + resName + " " + resAddress + " Boston, MA");
 
         // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
